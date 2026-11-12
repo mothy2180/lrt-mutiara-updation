@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LRT Mutiara Updation – Submit Complaint</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="container" style="max-width:720px">
+    <h1 class="page-title">Submit a complaint</h1>
+    <p class="lead">Tell us about a construction problem. Fields marked * are required.</p>
+    <p class="notice">Privacy: your name and contact details are only visible to authorised staff.</p>
+
+    <div id="done" class="success" hidden tabindex="-1" role="status">
+      <h2 style="margin-top:0">Complaint received</h2>
+      <p>Your reference ID is <strong id="ref"></strong>. Please keep it so you can track your complaint.</p>
+      <a class="btn" id="track-link" href="track-complaint.html">Track this complaint</a>
+      <button type="button" class="ghost" id="another">Submit another</button>
+    </div>
+
+    <form id="form" novalidate>
+      <label for="name">Full name *</label>
+      <input id="name" autocomplete="name">
+      <div class="error" id="e-name"></div>
+
+      <label for="contact">Email or phone *</label>
+      <input id="contact" autocomplete="email">
+      <div class="error" id="e-contact"></div>
+
+      <label for="loc">Location *</label>
+      <select id="loc"></select>
+      <div class="error" id="e-loc"></div>
+
+      <label for="cat">Category *</label>
+      <select id="cat">
+        <option value="">Select category</option>
+        <option>Noise</option>
+        <option>Dust or pollution</option>
+        <option>Pedestrian access</option>
+        <option>Business access</option>
+        <option>Road safety</option>
+        <option>Other</option>
+      </select>
+      <div class="error" id="e-cat"></div>
+
+      <label for="desc">Description *</label>
+      <textarea id="desc" placeholder="What happened, where, and when?"></textarea>
+      <div class="error" id="e-desc"></div>
+
+      <label for="photo">Photo (optional)</label>
+      <input id="photo" type="file" accept="image/*">
+      <div class="hint">Demo only: the photo is previewed here but not uploaded.</div>
+      <img id="preview" class="photo-preview" alt="Preview of the selected photo" hidden>
+
+      <p><button type="submit">Submit complaint</button></p>
+    </form>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/submit.js"></script>
+</body>
+</html>

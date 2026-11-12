@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LRT Mutiara Updation – Road Closures</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="container">
+    <h1 class="page-title">Road closures and alternative routes</h1>
+    <p class="lead">Check which roads are affected and how to get around them.</p>
+
+    <section class="card map-card" aria-labelledby="map-heading">
+      <div id="map" role="region" aria-label="Interactive map of road closures. The same information is listed in the table below."></div>
+      <!-- shown only if the live map cannot load (for example no internet) -->
+      <img id="map-fallback" src="assets/closure-map.svg" width="900" height="520" hidden
+        alt="Schematic map of Penang island showing four closed roads in red with dashed green alternative routes, from George Town in the north to Bayan Baru in the south.">
+
+      <div class="map-text">
+        <h2 id="map-heading" style="margin:0 0 6px;font-size:1rem">Map of the affected area</h2>
+        <p style="margin:0 0 6px"><strong>Text description:</strong> the closures run from Komtar and George Town in the north-east, through Jelutong and Gelugor, down to Bayan Baru in the south. Each closed road and its alternative route is listed in the table below.</p>
+        <p style="margin:0 0 6px"><span class="dot red"></span> Active closure &nbsp; <span class="dot amber"></span> Upcoming closure &middot; click a marker for details. Use the + and &minus; buttons to zoom.</p>
+        <p style="margin:0" class="meta" id="map-note">Marker positions are approximate (centre of each area). Map data &copy; OpenStreetMap contributors; needs an internet connection.</p>
+      </div>
+    </section>
+
+    <form class="filters" onsubmit="return false" aria-label="Filter road closures">
+      <div><label for="loc">Location</label><select id="loc"></select></div>
+      <div><label for="status">Status</label>
+        <select id="status">
+          <option value="">All</option>
+          <option value="Active">Active</option>
+          <option value="Upcoming">Upcoming</option>
+        </select>
+      </div>
+    </form>
+
+    <p class="meta" id="count" aria-live="polite"></p>
+    <div class="table-wrap">
+      <table>
+        <caption class="meta" style="text-align:left;padding-bottom:6px">Road closures</caption>
+        <thead><tr><th>Affected road</th><th>Location</th><th>Dates</th><th>Details</th><th>Alternative route</th><th>Status</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/closures.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LRT Mutiara Updation – Staff and Admin Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="container" style="max-width:460px">
+    <h1 class="page-title">Staff and admin login</h1>
+    <p class="lead">For authorised construction staff and administrators. Members of the public do not need to log in.</p>
+
+    <form id="form" class="card" novalidate>
+      <label for="uid" style="margin-top:0">User ID</label>
+      <input id="uid" autocomplete="username">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="current-password">
+      <div class="error" id="err" role="alert"></div>
+      <p style="margin-bottom:0"><button type="submit">Log in</button></p>
+    </form>
+
+    <div class="notice" style="margin-top:18px">
+      <strong>Demo accounts (prototype only, not real security)</strong>
+      <table style="margin-top:8px">
+        <thead><tr><th>Role</th><th>User ID</th><th>Password</th><th>Can do</th></tr></thead>
+        <tbody>
+          <tr><td>Staff</td><td>staff</td><td>staff123</td><td>Complaints, announcements, road closures</td></tr>
+          <tr><td>Admin</td><td>admin</td><td>admin123</td><td>Everything staff can do, plus manage users and roles and reset demo data</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/layout.js"></script>
+  <script>
+    // Demo only: accounts come from the sample user list (admins can edit it on the dashboard).
+    // A real system would check these on a server.
+    document.getElementById("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const uid = document.getElementById("uid").value.trim().toLowerCase();
+      const pw = document.getElementById("pw").value;
+      const user = Store.get("users").find((u) => u.userId.toLowerCase() === uid);
+      const err = document.getElementById("err");
+      if (!user || user.password !== pw) { err.textContent = "Incorrect user ID or password."; return; }
+      if (!user.active) { err.textContent = "This account is disabled. Please contact the administrator."; return; }
+      Store.setRole(user.role, user.userId);
+      location.href = "staff-dashboard.html";
+    });
+  </script>
+</body>
+</html>

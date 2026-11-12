@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LRT Mutiara Updation – Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <h1 class="page-title">Dashboard</h1>
+      <div class="row-actions">
+        <button type="button" class="ghost" id="reset-demo">Reset demo data</button>
+        <button type="button" class="ghost" id="logout">Log out</button>
+      </div>
+    </div>
+    <p class="lead">Logged in as <strong id="role-name"></strong>. <span id="role-scope"></span></p>
+    <p class="notice" id="msg" role="status" aria-live="polite" hidden></p>
+
+    <section class="grid cols-3" aria-label="Complaint summary" style="margin-top:16px">
+      <div class="card"><div class="stat" id="s-sub">0</div><div>Submitted</div></div>
+      <div class="card"><div class="stat" id="s-prog">0</div><div>In Progress</div></div>
+      <div class="card"><div class="stat" id="s-res">0</div><div>Resolved</div></div>
+    </section>
+
+    <!-- ================= STAFF AREA ================= -->
+    <div id="staff-area">
+      <h2>Complaints</h2>
+      <div class="filters" style="max-width:520px">
+        <div><label for="f-status">Status</label><select id="f-status"></select></div>
+        <div><label for="f-prio">Priority</label><select id="f-prio"></select></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ID</th><th>Complainant</th><th>Location / category</th><th>Description</th><th>Triage</th><th>Respond</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+
+      <h2>Announcements</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Announcement</th><th>Category</th><th>Actions</th></tr></thead>
+          <tbody id="ann-list"></tbody>
+        </table>
+      </div>
+
+      <div class="grid cols-2" style="margin-top:24px">
+        <section class="card" aria-labelledby="ann-heading">
+          <h2 id="ann-heading" style="margin-top:0">Post an announcement</h2>
+          <form id="ann-form" novalidate>
+            <label for="a-title">Title</label><input id="a-title">
+            <label for="a-cat">Category</label><select id="a-cat"></select>
+            <label for="a-loc">Location</label><input id="a-loc" placeholder="e.g. George Town">
+            <label for="a-areas">Affected areas</label><input id="a-areas">
+            <label for="a-start">Construction start</label><input id="a-start" type="date">
+            <label for="a-end">Construction end</label><input id="a-end" type="date">
+            <label for="a-sum">Summary</label><textarea id="a-sum"></textarea>
+            <div class="error" id="a-err"></div>
+            <p class="row-actions">
+              <button type="submit" id="a-submit">Publish announcement</button>
+              <button type="button" class="ghost" id="a-cancel" hidden>Cancel edit</button>
+            </p>
+          </form>
+        </section>
+
+        <section class="card" aria-labelledby="clo-heading">
+          <h2 id="clo-heading" style="margin-top:0">Add a road closure</h2>
+          <form id="clo-form" novalidate>
+            <label for="c-road">Affected road</label><input id="c-road">
+            <label for="c-loc">Location</label><input id="c-loc" list="area-list" placeholder="Choose an area, e.g. Komtar">
+            <datalist id="area-list"></datalist>
+            <div class="hint">Pick a suggested area so the closure appears on the map.</div>
+            <label for="c-from">From</label><input id="c-from" type="date">
+            <label for="c-to">To</label><input id="c-to" type="date">
+            <label for="c-det">Details</label><textarea id="c-det" style="min-height:70px"></textarea>
+            <label for="c-alt">Alternative route</label><input id="c-alt">
+            <div class="error" id="c-err"></div>
+            <p><button type="submit">Add closure</button></p>
+          </form>
+        </section>
+      </div>
+    </div>
+
+    <!-- ================= ADMIN AREA ================= -->
+    <div id="admin-area">
+      <h2>Manage users and roles</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>User ID</th><th>Name</th><th>Role</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="user-rows"></tbody>
+        </table>
+      </div>
+
+      <section class="card" style="margin-top:24px;max-width:520px" aria-labelledby="usr-heading">
+        <h2 id="usr-heading" style="margin-top:0">Add a user</h2>
+        <form id="user-form" novalidate>
+          <label for="u-id">User ID</label><input id="u-id" autocomplete="off" placeholder="letters and numbers, 3 or more">
+          <label for="u-name">Full name</label><input id="u-name" autocomplete="off">
+          <label for="u-role">Role</label>
+          <select id="u-role"><option value="staff">Staff</option><option value="admin">Administrator</option></select>
+          <div class="error" id="u-err"></div>
+          <p class="hint">New users get the temporary password <strong>welcome123</strong> (demo only).</p>
+          <p><button type="submit">Add user</button></p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

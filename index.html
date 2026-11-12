@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LRT Mutiara Updation – Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">Penang LRT Mutiara Line</span>
+      <h1>Know what is happening on your street before you leave home</h1>
+      <p>Latest construction announcements, road closures with alternative routes, and a simple way to report problems and follow up on them.</p>
+      <a class="btn alt" href="announcements.html">See announcements</a>
+      <a class="btn light" href="submit-complaint.html">Submit a complaint</a>
+    </div>
+  </section>
+
+  <main id="main" class="container" style="padding-top:0">
+    <section class="grid cols-3 overlap" aria-label="Summary">
+      <div class="card stat-card"><span class="icon" aria-hidden="true">📢</span><div><div class="stat" id="stat-ann">0</div><div>Announcements</div></div></div>
+      <div class="card stat-card"><span class="icon red" aria-hidden="true">🚧</span><div><div class="stat" id="stat-clo">0</div><div>Active road closures</div></div></div>
+      <div class="card stat-card"><span class="icon amber" aria-hidden="true">📝</span><div><div class="stat" id="stat-cmp">0</div><div>Complaints still open</div></div></div>
+    </section>
+
+    <h2>Latest announcements</h2>
+    <div class="grid cols-3" id="latest"></div>
+    <p><a href="announcements.html">View all announcements &rarr;</a></p>
+
+    <h2>What would you like to do?</h2>
+    <div class="grid cols-3">
+      <div class="card action-card lift"><span class="icon red" aria-hidden="true">🚧</span><h3>Check road closures</h3><p>See affected roads, dates and alternative routes.</p><a class="btn" href="road-closures.html">Road closures</a></div>
+      <div class="card action-card lift"><span class="icon amber" aria-hidden="true">✍️</span><h3>Report a problem</h3><p>Send a complaint with a description and photo.</p><a class="btn" href="submit-complaint.html">Submit complaint</a></div>
+      <div class="card action-card lift"><span class="icon green" aria-hidden="true">🔎</span><h3>Track a complaint</h3><p>Enter your reference ID to see the status.</p><a class="btn" href="track-complaint.html">Track complaint</a></div>
+      <div class="card action-card lift"><span class="icon" aria-hidden="true">❓</span><h3>FAQ and contact</h3><p>Quick answers and how to reach the project team.</p><a class="btn" href="faq.html">FAQ and contact</a></div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

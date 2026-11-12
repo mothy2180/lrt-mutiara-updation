@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LRT Mutiara Updation – Track Complaint</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="container" style="max-width:720px">
+    <h1 class="page-title">Track your complaint</h1>
+    <p class="lead">Enter the reference ID you received when you submitted (for example CMP-0001).</p>
+
+    <form id="form" class="filters" style="grid-template-columns:1fr auto" onsubmit="return false">
+      <div><label for="ref">Reference ID</label><input id="ref" placeholder="CMP-0001" autocomplete="off"></div>
+      <div><button type="submit">Track</button></div>
+    </form>
+    <div class="error" id="err" role="alert"></div>
+
+    <section id="result" class="card" hidden aria-live="polite"></section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/track.js"></script>
+</body>
+</html>
